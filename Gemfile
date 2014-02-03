@@ -15,3 +15,4 @@ group :doc do
 end
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'pry'
+gem 'annotate'
