@@ -7,7 +7,7 @@ class TripsController < ApplicationController
 	end
 
 	def create
-		trip = params.require(:trip).permit(:start, :end)
+		trip = params.require(:trip).permit(:name, :waypoints)
 		Trip.create(trip)
 		redirect_to :root
 	end

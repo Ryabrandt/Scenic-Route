@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203194433) do
+ActiveRecord::Schema.define(version: 20140204045516) do
 
   create_table "trips", force: true do |t|
-    t.string   "start"
-    t.string   "end"
+    t.string   "name"
+    t.string   "waypoints"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

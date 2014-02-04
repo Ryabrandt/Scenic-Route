@@ -1,10 +1,20 @@
 $(function(){
-    $("#update_new_route").click(codeAddress);
+    $("#show_new_route").click(codeAddress);
     $("#save_new_route").click(function(){
-      $("#new_trip").submit();
+       var points = [];
+       var trip = {};
+       var way = directionsDisplay.directions.routes[0].legs[0];
+       trip.begin = {'lat': way.start_location.lat(), 'lng': way.start_location.lng()}
+       trip.end = {'lat': way.end_location.lat(), 'lng': way.end_location.lng()}
+       var way_points = way.via_waypoints;
+        for(var i=0;i<way_points.length;i++){
+            points[i] = [way_points[i].lat(),way_points[i].lng()];
+          }
+    trip.waypoints = points;
     })
   });
 
+    
 var rendererOptions = {
   draggable: true
 };
@@ -54,7 +64,6 @@ function calcRoute(startloc,endloc) {
   directionsService.route(request, function(response, status) {
     if (status == google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(response);
-      console.log($("#directionsPanel").html());
     }
   });
 }

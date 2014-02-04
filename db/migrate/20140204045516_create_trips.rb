@@ -1,8 +1,8 @@
 class CreateTrips < ActiveRecord::Migration
   def change
     create_table :trips do |t|
-      t.string :start
-      t.string :end
+      t.string :name
+      t.string :waypoints
 
       t.timestamps
     end
