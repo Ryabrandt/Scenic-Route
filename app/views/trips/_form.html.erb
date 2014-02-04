@@ -1,0 +1,11 @@
+<%= form_for @trip do |f| %>
+	<%= f.text_field :start, id: "routeStart", placeholder: "Beginning"%><br>
+	<%= f.text_field :end, id: "routeEnd", placeholder: "End" %><br>
+
+
+	<%= f.submit "Show Trip!", id: "update_new_route" %>
+
+<% end %>
+
+
+<button id="save_new_route">Save Trip</button>

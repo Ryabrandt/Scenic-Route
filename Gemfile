@@ -14,5 +14,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 gem 'bcrypt-ruby', '~> 3.1.2'
-gem 'pry'
+group :development do
+	gem 'pry'
+	
+end
+
 gem 'annotate'
