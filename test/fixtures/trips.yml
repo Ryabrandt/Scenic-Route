@@ -2,8 +2,10 @@
 
 one:
   name: MyString
-  waypoints: MyString
+  start: MyString
+  end: MyString
 
 two:
   name: MyString
-  waypoints: MyString
+  start: MyString
+  end: MyString

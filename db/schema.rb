@@ -11,13 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204045516) do
+ActiveRecord::Schema.define(version: 20140204205149) do
 
   create_table "trips", force: true do |t|
     t.string   "name"
-    t.string   "waypoints"
+    t.string   "start"
+    t.string   "end"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "waypoints", force: true do |t|
+    t.string   "lat"
+    t.string   "long"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "trip_id"
+  end
+
+  add_index "waypoints", ["trip_id"], name: "index_waypoints_on_trip_id"
 
 end

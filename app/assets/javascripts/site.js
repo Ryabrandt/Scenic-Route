@@ -4,15 +4,22 @@ $(function(){
        var points = [];
        var trip = {};
        var way = directionsDisplay.directions.routes[0].legs[0];
-       trip.begin = {'lat': way.start_location.lat(), 'lng': way.start_location.lng()}
-       trip.end = {'lat': way.end_location.lat(), 'lng': way.end_location.lng()}
+       trip.begin = {'lat': way.start_location.lat(), 'lng': way.start_location.lng()};
+       trip.end = {'lat': way.end_location.lat(), 'lng': way.end_location.lng()};
        var way_points = way.via_waypoints;
         for(var i=0;i<way_points.length;i++){
             points[i] = [way_points[i].lat(),way_points[i].lng()];
           }
-    trip.waypoints = points;
-    })
+      trip.waypoints = points;
+
+      trip.waypoints.forEach(function(item, index){
+          $("#new_trip").append("<input name='trip[waypoints]["+index+"][lat]' value='"+item[0]+"'>")
+          $("#new_trip").append("<input name='trip[waypoints]["+index+"][long]' value='"+item[1]+"'>")
+      })
+      $("#new_trip").submit();
+    });
   });
+  
 
     
 var rendererOptions = {
@@ -23,6 +30,8 @@ var directionsService = new google.maps.DirectionsService();
 var map;
 var sf = new google.maps.LatLng(37.7434701,-122.4557752);
 var geocoder = new google.maps.Geocoder();
+
+
 
 function initialize() {
 

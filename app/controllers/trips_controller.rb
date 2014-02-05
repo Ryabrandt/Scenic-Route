@@ -7,9 +7,17 @@ class TripsController < ApplicationController
 	end
 
 	def create
-		trip = params.require(:trip).permit(:name, :waypoints)
-		Trip.create(trip)
-		redirect_to :root
+		#raise params.inspect
+		points = []
+		trip = params.require(:trip).permit(:start, :end) #refactor
+		waypoints = params.require(:trip).permit(waypoints: [:lat, :long])
+		waypoints["waypoints"].each_value {|value| points << value }
+		new_trip = Trip.create(trip)
+
+		points.each do |point|
+			new_trip.waypoints.build(point).save
+		end
+		redirect_to :back
 	end
 
 end
