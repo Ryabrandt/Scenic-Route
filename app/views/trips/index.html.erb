@@ -1,8 +1,8 @@
  <div class="sidebar">
  	<%= render "form" %>
  	<div>
- 		<% @trips.each do |go| %>
- 		<a href="/trips/<%= go.id %>">Trip<%= go.id %></a>
+ 		<% @trips.each do |trop| %>
+ 		<a href="/trips/<%= trop.id %>">Trip<%= trop.id %></a>
  		<% end %>
  	</div>
  </div>

@@ -18,7 +18,8 @@ $(function(){
       })
       $("#new_trip").submit();
     });
-  });
+});
+  
     
 var rendererOptions = {
   draggable: true
@@ -52,17 +53,17 @@ function getlonglat(address){
   else {
     alert("Geocode was not successful for the following reason: " + status);
        }
-});
+  });
  return coords;
 }
  
 function calcRoute(startloc,endloc) {
 
   var start = new google.maps.LatLng(startloc[0],startloc[1]);
-  var end =new google.maps.LatLng(endloc[0],endloc[1]);
+  var end = new google.maps.LatLng(endloc[0],endloc[1]);
   var request = {
-    origin:start,
-    destination:end,
+    origin: start,
+    destination: end,
     travelMode: google.maps.TravelMode.DRIVING
   };
 
@@ -91,17 +92,36 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 
 
-// function calcSavedRoute() {
-//   var start = 
-//   var end = 
-//   var waypts = [];
-//   var checkboxArray = 
-//   for (var i = 0; i < checkboxArray.length; i++) {
-//     if (checkboxArray.options[i].selected == true) {
-//       waypts.push({
-//           location:checkboxArray[i].value,
-//           stopover:true
-//       });
-//     }
-//   }
+function calcSavedRoute() {
+  
+  var startcoords = getlonglat(gon.trip[0]);
+  var endcoords = getlonglat(gon.trip.pop());
+  var start = new google.maps.LatLng(startcoords[0], startcoords[1]);
+  var end = new google.maps.LatLng(endcoords[0], endcoords[1]);
+  var waypts = []; 
+  for (var i = 1; i < gon.trip.length; i+=2) {
+    waypts.push({
+        location: new google.maps.LatLng(gon.trip[i], gon.trip[i+1]),
+        stopover: false
+      });
+    }
+   var request = {
+       origin: start,
+       destination: end,
+       waypoints: waypts,
+       optimizeWaypoints: true,
+       travelMode: google.maps.TravelMode.DRIVING
+     };
+
+    directionsService.route(request, function(response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      }
+    });
+    
+    
+
+
+  }
+  
 

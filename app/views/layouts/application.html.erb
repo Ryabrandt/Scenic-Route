@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Scenicroute</title>
+  <title>The Road Less Traveled</title>
   <%= include_gon %>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDr2T6_DLquuT_NaQLKX8QAB-BPt2aYjuo&
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GMAPS_API_KEY']%>&
 sensor=false"></script>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>

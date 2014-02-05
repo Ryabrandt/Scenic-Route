@@ -1,8 +1,9 @@
+<%= include_gon %>
  <div class="sidebar">
  	<%= render "form" %>
  	<div>
- 		<% @trips.each do |go| %>
- 		<a href="/index/<%= go.id %>">Trip<%= go.id %></a>
+ 		<% @trips.each do |trop| %>
+ 		<a href="/trips/<%= trop.id %>">Trip<%= trop.id %></a>
  		<% end %>
  	</div>
  </div>
@@ -10,3 +11,6 @@
  <div id="map-canvas"></div>
     <div id="directionsPanel">
     </div>
+    <script>
+    calcSavedRoute;
+    </script>
