@@ -1,0 +1,22 @@
+ <%= form_for(@user) do |f| %>
+      <% unless @user.errors.count == 0   %>
+        <div class="alert alert-error">
+          The form contains <%= pluralize(@user.errors.count, "error") %>.
+        </div>
+        <ul class="list-group">
+        <% @user.errors.full_messages.each do |msg| %>
+          <li class="list-group-item"><%= msg %></li>
+        <% end %>
+        </ul>
+      <% end %>
+
+      <%= f.text_field :name %>
+
+      <%= f.text_field :email %>
+
+      <%= f.password_field :password %>
+      
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+    <% end %>

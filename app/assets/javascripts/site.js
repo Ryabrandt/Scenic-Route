@@ -19,8 +19,6 @@ $(function(){
       $("#new_trip").submit();
     });
   });
-  
-
     
 var rendererOptions = {
   draggable: true
@@ -30,8 +28,6 @@ var directionsService = new google.maps.DirectionsService();
 var map;
 var sf = new google.maps.LatLng(37.7434701,-122.4557752);
 var geocoder = new google.maps.Geocoder();
-
-
 
 function initialize() {
 
@@ -90,4 +86,22 @@ function codeAddress(event) {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
+
+// function calcSavedRoute() {
+//   var start = 
+//   var end = 
+//   var waypts = [];
+//   var checkboxArray = 
+//   for (var i = 0; i < checkboxArray.length; i++) {
+//     if (checkboxArray.options[i].selected == true) {
+//       waypts.push({
+//           location:checkboxArray[i].value,
+//           stopover:true
+//       });
+//     }
+//   }
 

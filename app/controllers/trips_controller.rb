@@ -1,6 +1,10 @@
 class TripsController < ApplicationController
+
+	#make before filters
 	def index
 		@trip = Trip.new
+		@trips = Trip.all unless Trip.all.nil?
+		
 	end
 
 	def new
@@ -19,5 +23,12 @@ class TripsController < ApplicationController
 		end
 		redirect_to :back
 	end
+
+	def show
+		@new_trip = Trip.get_full_trip(params[:id])
+		gon.trip = @new_trip
+
+	end
+
 
 end

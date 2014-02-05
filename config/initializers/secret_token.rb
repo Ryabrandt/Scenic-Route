@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Scenicroute::Application.config.secret_key_base = '438083b5a78c03928cea1053ba26c15210baa3a03507db437a52caa97466dbe29fa2ef6ff0073c4b277cc6da395141c41aa97bfa60b6a8fd18fb062138005cd8'
+Scenicroute::Application.config.secret_key_base = ENV['SECRET_KEY_BASE']
