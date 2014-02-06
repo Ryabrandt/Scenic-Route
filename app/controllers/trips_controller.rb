@@ -29,7 +29,7 @@ class TripsController < ApplicationController
 		@trips = Trip.all unless Trip.all.nil?
 		@new_trip = Trip.get_full_trip(params[:id])
 		gon.trip = @new_trip
-		
+
 	end
 
 

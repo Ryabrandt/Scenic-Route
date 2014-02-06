@@ -41,26 +41,33 @@ function initialize() {
     directionsDisplay.setPanel(document.getElementById('directionsPanel'));
 }
 
-function getlonglat(address){
- var coords=[];
- geocoder.geocode( { 'address': address}, function(results, status) {
+function getlonglat(addresses, callback){
+  var latLngLocs = [];
+  addresses.forEach(function(address,index, addresses){
+    var coords = [];
+    geocoder.geocode({ 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        coords[0]=results[0].geometry.location.lat();
+        coords[1]=results[0].geometry.location.lng();
+        console.log(coords)
 
-    if (status == google.maps.GeocoderStatus.OK) {
-    coords[0]=results[0].geometry.location.lat();
-    coords[1]=results[0].geometry.location.lng();
 
-  } 
-  else {
-    alert("Geocode was not successful for the following reason: " + status);
-       }
-  });
- return coords;
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+    console.log(coords)
+    var loc = new google.maps.LatLng(coords[0], coords[1]);
+    console.log(loc)
+    latLngLocs.push(loc)
+  })
+  callback(latLngLocs)
 }
  
-function calcRoute(startloc,endloc) {
-
-  var start = new google.maps.LatLng(startloc[0],startloc[1]);
-  var end = new google.maps.LatLng(endloc[0],endloc[1]);
+function calcRoute(latLngLocs) {
+  console.log(latLngLocs)
+  var start = latLngLocs[0];
+  var end = latLngLocs[1];
   var request = {
     origin: start,
     destination: end,
@@ -74,38 +81,66 @@ function calcRoute(startloc,endloc) {
   });
 }
 
+function getlonglat(index, addresses, callback, data) {
+  var data = data || [];
+  if(index < addresses.length){
+    var address = addresses[index];
+    geocoder.geocode({ 'address': address}, function(results, status) {
+       var coords = [];
+       if (status == google.maps.GeocoderStatus.OK) {
+        coords[0]=results[0].geometry.location.lat();
+        coords[1]=results[0].geometry.location.lng();
+        
+        var loc = new google.maps.LatLng(coords[0], coords[1]);
+        data.push(loc)
+        getlonglat(index+1, addresses,callback,data)
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  } else {
+    callback(data)
+  }
+}
+
+
 function codeAddress(event) {
   event.preventDefault();
   
 	var address1 = document.getElementById("routeStart").value;
 	var address2 = document.getElementById("routeEnd").value;
 
-	var start_position=getlonglat(address1);    
-	var finish_position=getlonglat(address2);
-	
-    setTimeout(function() {calcRoute(start_position,finish_position);},800);
+  getlonglat(0, [address1,address2], calcRoute)
 }
+$(function(){
 
-google.maps.event.addDomListener(window, 'load', initialize);
+$('body').on("change", function(){
+  window.location.reload();
+  google.maps.event.addDomListener(window, 'load', initialize);
+
+})
+});
 
 
 
+ google.maps.event.addDomListener(window, 'load', initialize);
 
 
 function calcSavedRoute() {
   
-  var startcoords = getlonglat(gon.trip[0]);
-  var endcoords = getlonglat(gon.trip.pop());
-  var start = new google.maps.LatLng(startcoords[0], startcoords[1]);
-  var end = new google.maps.LatLng(endcoords[0], endcoords[1]);
-  var waypts = []; 
-  for (var i = 1; i < gon.trip.length; i+=2) {
-    waypts.push({
+  var rawStart = gon.trip[0];
+  var rawEnd = gon.trip.pop();
+
+  getlonglat(0,[rawStart, rawEnd], function(data){
+    var start = data[0], end = data[1];
+    var waypts = []; 
+    for (var i = 1; i < gon.trip.length; i+=2) {
+      waypts.push({
         location: new google.maps.LatLng(gon.trip[i], gon.trip[i+1]),
         stopover: false
       });
     }
-   var request = {
+    var request = {
        origin: start,
        destination: end,
        waypoints: waypts,
@@ -120,8 +155,8 @@ function calcSavedRoute() {
     });
     
     
+  });
 
-
-  }
+}
   
 
