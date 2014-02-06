@@ -2,19 +2,19 @@
 <div class="form-group">
 	<%= form_for @trip do |f| %>
 		<div class="form-group">
-		<%= f.text_field :start, id: "routeStart", placeholder: "Beginning", class: "form-control"%><br>
+		<%= f.text_field :start, id: "routeStart", placeholder: "Beginning", class: "form-control"%>
 		</div>
 		<div class="form-group">
-		<%= f.text_field :end, id: "routeEnd", placeholder: "End", class: "form-control" %><br>
+		<%= f.text_field :end, id: "routeEnd", placeholder: "End", class: "form-control" %>
 		</div>
 		<div class="form-group">
-		<%= f.submit "Show Trip!", id: "show_new_route", class: "btn btn-default form-control" %><br>
+		<%= f.submit "Show Trip!", id: "show_new_route", class: "btn btn-primary form-control" %><br><br>
 		</div>
 		<div class="form-group">
-		<%= f.text_field :name, placeholder: "Name trip", class: "form-control"%>
+		<%= f.text_field :name, placeholder: "Name before saving", class: "form-control"%>
 		</div>
 	<% end %>
-	<button class="btn btn-default form-control" id="save_new_route">Save Trip</button>
+	<button class="btn btn-default form-control" id="save_new_route">Save</button>
 </div>
 
 

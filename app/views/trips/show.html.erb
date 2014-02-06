@@ -3,7 +3,7 @@
  	
  	<div>
  		<% @trips.each do |trop| %>
- 		<a class="btn btn-default" href="/trips/<%= trop.id %>">Trip<%= trop.name %></a>
+ 		<a class="btn btn-default" href="/trips/<%= trop.id %>"><%= trop.name %></a><br>
  		<% end %>
  	</div>
  </div>
