@@ -11,11 +11,17 @@ sensor=false"></script>
 </head>
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <ul>
-	    <li><a href="/" data-no-turbolink>Home</a></li>
-	  	<li><a href="#">Routes</a></li>
-	 </ul>
-</nav>
+    <div class="container-fluid">  
+      <ul class="nav navbar-nav navbar">
+  	    <li><a href="/" data-no-turbolink>Home</a></li>
+  	  	<li><a href="/about">About</a></li>
+  	  </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Sign in", signin_path %><li>
+        <li><%= link_to "Sign up", signup_path %></li>
+      </ul>
+    </div>
+  </nav>
 
 <%= yield %>
 

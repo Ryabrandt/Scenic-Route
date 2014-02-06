@@ -1,22 +1,47 @@
- <%= form_for(@user) do |f| %>
-      <% unless @user.errors.count == 0   %>
-        <div class="alert alert-error">
+<div class="page-header text-center">
+  <h1>Sign up</h1>
+</div>
+
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col xs-3 col-sm-4 col-md-4 col-lg-4">
+    </div>
+      <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+        <div class="form-group">
+          <%= form_for(@user) do |f| %>
+          <% unless @user.errors.count == 0   %>
+          <div class="alert alert-error">
           The form contains <%= pluralize(@user.errors.count, "error") %>.
-        </div>
-        <ul class="list-group">
-        <% @user.errors.full_messages.each do |msg| %>
+          </div>
+          <ul class="list-group">
+          <% @user.errors.full_messages.each do |msg| %>
           <li class="list-group-item"><%= msg %></li>
-        <% end %>
-        </ul>
-      <% end %>
+          <% end %>
+          </ul>
+          <% end %>
+        </div>
 
-      <%= f.text_field :name %>
-
-      <%= f.text_field :email %>
-
-      <%= f.password_field :password %>
-      
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-    <% end %>
+        <div class="form-group">
+          <%= f.text_field :name, placeholder: "Your name", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :email, placeholder: "E-mail Address", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.password_field :password_confirmation, placeholder: "Retype Password", class: "form-control"%>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Join the Travelers", class: "btn btn-large btn-primary form-control" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col xs-3 col-sm-4 col-md-4 col-lg-4">
+      </div>
+  </div>
+</div>

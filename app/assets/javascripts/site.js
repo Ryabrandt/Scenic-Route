@@ -87,8 +87,11 @@ function codeAddress(event) {
   
 	var address1 = document.getElementById("routeStart").value;
 	var address2 = document.getElementById("routeEnd").value;
+  if(address1 || address2 == ""){
+    alert("Cannot find a route with no endpoints")
+  }
+    getlonglat(0, [address1,address2], calcRoute)
 
-  getlonglat(0, [address1,address2], calcRoute)
 }
 
 
