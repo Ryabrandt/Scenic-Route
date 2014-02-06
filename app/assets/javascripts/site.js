@@ -65,12 +65,12 @@ function getlonglat(addresses, callback){
 }
  
 function calcRoute(latLngLocs) {
-  console.log(latLngLocs)
   var start = latLngLocs[0];
   var end = latLngLocs[1];
   var request = {
     origin: start,
     destination: end,
+    avoidHighways: true,
     travelMode: google.maps.TravelMode.DRIVING
   };
 
@@ -129,7 +129,7 @@ function calcSavedRoute() {
     for (var i = 1; i < gon.trip.length; i+=2) {
       waypts.push({
         location: new google.maps.LatLng(gon.trip[i], gon.trip[i+1]),
-        stopover: false
+        stopover: true
       });
     }
     var request = {
@@ -137,6 +137,8 @@ function calcSavedRoute() {
        destination: end,
        waypoints: waypts,
        optimizeWaypoints: true,
+       avoidHighways: true,
+       provideRouteAlternatives: true,
        travelMode: google.maps.TravelMode.DRIVING
      };
 
