@@ -13,7 +13,7 @@ class TripsController < ApplicationController
 	def create
 		#raise params.inspect
 		points = []
-		trip = params.require(:trip).permit(:start, :end) #refactor
+		trip = params.require(:trip).permit(:start, :end, :name)
 		waypoints = params.require(:trip).permit(waypoints: [:lat, :long])
 		waypoints["waypoints"].each_value {|value| points << value }
 		new_trip = Trip.create(trip)

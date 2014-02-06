@@ -2,11 +2,13 @@
  	<%= render "form" %>
  	<div>
  		<% @trips.each do |trop| %>
- 		<a href="/trips/<%= trop.id %>">Trip<%= trop.id %></a>
+ 		<a class="btn btn-default" href="/trips/<%= trop.id %>"><%= trop.name %></a>
  		<% end %>
  	</div>
  </div>
 
  <div id="map-canvas"></div>
-    <div id="directionsPanel">
-    </div>
+<div id="directionsBox">
+<div id="directionsPanel">
+</div>
+</div>

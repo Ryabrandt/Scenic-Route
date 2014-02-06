@@ -33,7 +33,7 @@ var geocoder = new google.maps.Geocoder();
 function initialize() {
 
 		var mapOptions = {
-			zoom: 11,
+			zoom: 12,
 			center: sf
 		};
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -87,10 +87,8 @@ function codeAddress(event) {
   
 	var address1 = document.getElementById("routeStart").value;
 	var address2 = document.getElementById("routeEnd").value;
-  if(address1 || address2 == ""){
-    alert("Cannot find a route with no endpoints")
-  }
-    getlonglat(0, [address1,address2], calcRoute)
+  
+  getlonglat(0, [address1,address2], calcRoute)
 
 }
 

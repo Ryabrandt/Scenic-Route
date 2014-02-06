@@ -1,5 +1,5 @@
 body{
-	padding-top: 50px;
+	padding-top: 53px;
 	height: 100%;
 	margin: 0px;
 }
@@ -10,18 +10,32 @@ html, #map-canvas {
     padding: 0px
 }
 #map-canvas {
-	float:left;
-	width:60%; 
-	height:100%
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  z-index: 0;
 }
-#directionsPanel{
-	float:right;
-	width:20%;
-	height: 100%
+#directionsBox{
+   background-color: tranparent;
+   opacity: .5;
+   position: fixed;
+   right: 10px;
+   top: 100px;
+   width: 20%; 
+   height: 50%;
+   z-index: 1;
+   overflow: auto;
+}
+#directionsPanel {
+   height: 100%;
+   width: 100%;
+   color: black;
+   z-index: 1;
 
 }
 .sidebar{
 	height: 100%;
-	width: 20%;
+	width: 15%;
+	background: gray;
 	float: left;
 }
