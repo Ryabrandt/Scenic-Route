@@ -41,28 +41,6 @@ function initialize() {
     directionsDisplay.setPanel(document.getElementById('directionsPanel'));
 }
 
-function getlonglat(addresses, callback){
-  var latLngLocs = [];
-  addresses.forEach(function(address,index, addresses){
-    var coords = [];
-    geocoder.geocode({ 'address': address}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        coords[0]=results[0].geometry.location.lat();
-        coords[1]=results[0].geometry.location.lng();
-        console.log(coords)
-
-
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
-    });
-    console.log(coords)
-    var loc = new google.maps.LatLng(coords[0], coords[1]);
-    console.log(loc)
-    latLngLocs.push(loc)
-  })
-  callback(latLngLocs)
-}
  
 function calcRoute(latLngLocs) {
   var start = latLngLocs[0];
