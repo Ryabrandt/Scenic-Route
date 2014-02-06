@@ -112,14 +112,6 @@ function codeAddress(event) {
 
   getlonglat(0, [address1,address2], calcRoute)
 }
-$(function(){
-
-$('body').on("change", function(){
-  window.location.reload();
-  google.maps.event.addDomListener(window, 'load', initialize);
-
-})
-});
 
 
 
