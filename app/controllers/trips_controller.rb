@@ -11,7 +11,6 @@ class TripsController < ApplicationController
 	end
 
 	def create
-		#raise params.inspect
 		points = []
 		trip = params.require(:trip).permit(:start, :end, :name)
 		waypoints = params.require(:trip).permit(waypoints: [:lat, :long])

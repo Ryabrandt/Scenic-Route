@@ -5,7 +5,7 @@
  	</div>
  	<div>
  		<% @trips.each do |trop| %>
- 		<a class="btn btn-default" href="/trips/<%= trop.id %>"><%= trop.name %></a><br>
+ 		<a class="btn btn-default" href="/trips/<%= trop.id %>"><%= trop.name %></a><br><br>
  		<% end %>
  	</div>
  </div>
@@ -15,7 +15,5 @@
  	});
  </script>
  <div id="map-canvas"></div>
-<div id="directionsBox">
 <div id="directionsPanel">
-</div>
 </div>

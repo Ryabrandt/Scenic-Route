@@ -39,11 +39,11 @@ $(document).ready(function () {
         $('#page-content, .navbar, body, .navbar-header').toggleClass('slide-active');
     });
     var selected = '#slidemenu, #page-content, body, .navbar, .navbar-header';
-    $(window).on("resize", function () {
+    if( /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent)) { 
         if ($(window).width() > 767 && $('.navbar-toggle').is(':hidden')) {
             $(selected).removeClass('slide-active');
         }
-    });
+      }
 });
   
 var Mapper = function(option){

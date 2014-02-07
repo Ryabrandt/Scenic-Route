@@ -3,7 +3,7 @@ body.slide-active{
 }
 #page-content{
 	position: relative;
-	padding-top: 51px;
+	padding-top: 50px;
 	left: 0;
 	height: 100%;
 	margin: 0;
@@ -48,9 +48,9 @@ html, #map-canvas {
   padding: 0px;
   z-index: 0;
 }
-#directionsBox{
+#directionsPanel{
    background-color: tranparent;
-   opacity: .5;
+   opacity: .8;
    position: fixed;
    right: 10px;
    top: 100px;
@@ -59,13 +59,7 @@ html, #map-canvas {
    z-index: 1;
    overflow: auto;
 }
-#directionsPanel {
-   height: 100%;
-   width: 100%;
-   color: black;
-   z-index: 1;
 
-}
 .sidebar{
 	height: 100%;
 	width: 15%;
