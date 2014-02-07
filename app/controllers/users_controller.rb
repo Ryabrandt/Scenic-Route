@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    binding.pry
     new_user = params.require(:user).permit(:name, :email, :password, :password_confirmation)
     @user=User.new(new_user)
     if @user.save

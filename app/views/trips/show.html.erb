@@ -14,11 +14,5 @@
     </div>
  </div>
     <script>
-
-    (function makeMap(callback){
-		map = new google.maps.Map(document.getElementById('map-canvas'));
-    	directionsDisplay.setMap(map);
-    	directionsDisplay.setPanel(document.getElementById('directionsPanel'));
-    	callback();
-    })(calcSavedRoute)
+        showRoute();
     </script>

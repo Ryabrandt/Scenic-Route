@@ -33,6 +33,9 @@ sensor=false"></script>
     </div>
   </nav>
 <div id="page-content">
+  <%flash.each do|key,value|%>
+                <div class="alert alert-<%=key%>"> <%=value%> </div>
+  <%end%>
 
 <%= yield %>
 </div>
