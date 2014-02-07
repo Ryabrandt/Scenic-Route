@@ -36,5 +36,7 @@ class TripsController < ApplicationController
 
 	end
 
+	def about
+	end
 
 end
