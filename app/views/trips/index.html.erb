@@ -1,11 +1,11 @@
  <div class="sidebar">
  	<%= render "form" %>
  	<div class="page-header text-center">
- 		<h2>All Trips</h2>
+ 		<h2>All Travels</h2>
  	</div>
  	<div>
  		<% @trips.each do |trop| %>
- 		<a class="btn btn-default" href="/trips/<%= trop.id %>"><%= trop.name %></a><br><br>
+ 		<a class="btn btn-default btn-block" href="/trips/<%= trop.id %>"><%= trop.name %></a><br><br>
  		<% end %>
  	</div>
  </div>

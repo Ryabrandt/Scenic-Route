@@ -66,6 +66,17 @@ html, #map-canvas {
 	background: gray;
 	float: left;
 }
+.userpage{
+	background: url('http://d1vmp8zzttzftq.cloudfront.net/wp-content/uploads/2012/10/a-winding-road-curves-through-autumn-trees-in-new-england-1600x1071.jpg');
+	background-size: cover;
+	height: 100%;
+	background-repeat: no-repeat;
+	margin-top: -20px;
+}
+.user{
+	color: white;
+	padding-top: 50px;
+}
 @media (max-width:767px) { 
 	#slide-nav .container {
 	    margin: 0;

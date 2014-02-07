@@ -114,12 +114,10 @@ var Mapper = function(option){
 
     codeAddress: function(event) {
       event.preventDefault();
-      
+    
     	var address1 = document.getElementById("routeStart").value;
-    	var address2 = document.getElementById("routeEnd").value;
-      
+    	var address2 = document.getElementById("routeEnd").value;    
       api.getlonglat(0, [address1,address2], api.calcRoute)
-
     },
 
     calcSavedRoute: function() {
@@ -166,21 +164,22 @@ var Mapper = function(option){
   $("#save_new_route").click(function(){
    var points = [];
    var trip = {};
-   var way = api.directionsDisplay.directions.routes[0].legs[0];
-   trip.begin = {'lat': way.start_location.lat(), 'lng': way.start_location.lng()};
-   trip.end = {'lat': way.end_location.lat(), 'lng': way.end_location.lng()};
-   var way_points = way.via_waypoints;
-    for(var i=0;i<way_points.length;i++){
-        points[i] = [way_points[i].lat(),way_points[i].lng()];
-      }
-  trip.waypoints = points;
+     var way = api.directionsDisplay.directions.routes[0].legs[0];
+     trip.begin = {'lat': way.start_location.lat(), 'lng': way.start_location.lng()};
+     trip.end = {'lat': way.end_location.lat(), 'lng': way.end_location.lng()};
+     var way_points = way.via_waypoints;
+      for(var i=0;i<way_points.length;i++){
+          points[i] = [way_points[i].lat(),way_points[i].lng()];
+        }
+      trip.waypoints = points;
 
-  trip.waypoints.forEach(function(item, index){
-      $("#new_trip").append("<input type='hidden' name='trip[waypoints]["+index+"][lat]' value='"+item[0]+"'>")
-      $("#new_trip").append("<input type='hidden' name='trip[waypoints]["+index+"][long]' value='"+item[1]+"'>")
-  })
-  $("#new_trip").submit();
-  });
+      trip.waypoints.forEach(function(item, index){
+        $("#new_trip").append("<input type='hidden' name='trip[waypoints]["+index+"][lat]' value='"+item[0]+"'>")
+        $("#new_trip").append("<input type='hidden' name='trip[waypoints]["+index+"][long]' value='"+item[1]+"'>")
+      })
+        $("#new_trip").submit();
+      
+    });
   } 
   return api;
 }

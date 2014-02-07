@@ -1,9 +1,12 @@
 <%= include_gon %>
  <div class="sidebar">
+    <div class="page-header text-center">
+        <h2>All Travels</h2>
+    </div>
  	
  	<div>
  		<% @trips.each do |trop| %>
- 		<a class="btn btn-default" href="/trips/<%= trop.id %>"><%= trop.name %></a><br>
+ 		<a class="btn btn-default btn-block" href="/trips/<%= trop.id %>"><%= trop.name %></a><br>
  		<% end %>
  	</div>
  </div>
