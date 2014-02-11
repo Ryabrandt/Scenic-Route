@@ -49,8 +49,8 @@ html, #map-canvas {
   z-index: 0;
 }
 #directionsPanel{
-   background-color: tranparent;
-   opacity: .8;
+   background-color: white;
+   opacity: .75;
    position: fixed;
    right: 10px;
    top: 100px;
