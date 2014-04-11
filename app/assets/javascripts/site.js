@@ -1,51 +1,4 @@
-$(document).ready(function () {
-    //stick in the fixed 100% height behind the navbar but don't wrap it
-    $('#slide-nav.navbar .container').append($('<div id="navbar-height-col"></div>'));
-    // Enter your ids or classes
-    var toggler = '.navbar-toggle';
-    var pagewrapper = '#page-content';
-    var navigationwrapper = '.navbar-header';
-    var menuwidth = '100%'; // the menu inside the slide menu itself
-    var slidewidth = '80%';
-    var menuneg = '-100%';
-    var slideneg = '-80%';
 
-
-    $("#slide-nav").on("click", toggler, function (e) {
-
-        var selected = $(this).hasClass('slide-active');
-
-        $('#slidemenu').stop().animate({
-            left: selected ? menuneg : '0px'
-        });
-
-        $('#navbar-height-col').stop().animate({
-            left: selected ? slideneg : '0px'
-        });
-
-        $(pagewrapper).stop().animate({
-            left: selected ? '0px' : slidewidth
-        });
-
-        $(navigationwrapper).stop().animate({
-            left: selected ? '0px' : slidewidth
-        });
-
-
-        $(this).toggleClass('slide-active', !selected);
-        $('#slidemenu').toggleClass('slide-active');
-
-
-        $('#page-content, .navbar, body, .navbar-header').toggleClass('slide-active');
-    });
-    var selected = '#slidemenu, #page-content, body, .navbar, .navbar-header';
-    if( /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent)) { 
-        if ($(window).width() > 767 && $('.navbar-toggle').is(':hidden')) {
-            $(selected).removeClass('slide-active');
-        }
-      }
-});
-  
 var Mapper = function(option){
 
   var rendererOptions = {
@@ -61,12 +14,11 @@ var Mapper = function(option){
     directionsDisplay: new google.maps.DirectionsRenderer(rendererOptions),
     directionsService: new google.maps.DirectionsService(),
     initialize: function() {
-
-    		var mapOptions = {
-    			zoom: 12,
-    			center: sf
-    		};
-    	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      var mapOptions = {
+        zoom: 12,
+        center: sf
+      };
+      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
         api.directionsDisplay.setMap(map);
         api.directionsDisplay.setPanel(document.getElementById('directionsPanel'));
     },
@@ -100,14 +52,14 @@ var Mapper = function(option){
             coords[1]=results[0].geometry.location.lng();
             
             var loc = new google.maps.LatLng(coords[0], coords[1]);
-            data.push(loc)
-            api.getlonglat(index+1, addresses,callback,data)
+            data.push(loc);
+            api.getlonglat(index+1, addresses,callback,data);
           } else {
             alert("Geocode was not successful for the following reason: " + status);
           }
         });
       } else {
-        callback(data)
+        callback(data);
       }
     },
 
@@ -115,9 +67,9 @@ var Mapper = function(option){
     codeAddress: function(event) {
       event.preventDefault();
     
-    	var address1 = document.getElementById("routeStart").value;
-    	var address2 = document.getElementById("routeEnd").value;    
-      api.getlonglat(0, [address1,address2], api.calcRoute)
+      var address1 = document.getElementById("routeStart").value;
+      var address2 = document.getElementById("routeEnd").value;    
+      api.getlonglat(0, [address1,address2], api.calcRoute);
     },
 
     calcSavedRoute: function() {
@@ -154,7 +106,7 @@ var Mapper = function(option){
       });
 
     }
-  }
+  };
 
 
   if(option){
@@ -174,15 +126,15 @@ var Mapper = function(option){
       trip.waypoints = points;
 
       trip.waypoints.forEach(function(item, index){
-        $("#new_trip").append("<input type='hidden' name='trip[waypoints]["+index+"][lat]' value='"+item[0]+"'>")
-        $("#new_trip").append("<input type='hidden' name='trip[waypoints]["+index+"][long]' value='"+item[1]+"'>")
-      })
+        $("#new_trip").append("<input type='hidden' name='trip[waypoints]["+index+"][lat]' value='"+item[0]+"'>");
+        $("#new_trip").append("<input type='hidden' name='trip[waypoints]["+index+"][long]' value='"+item[1]+"'>");
+      });
         $("#new_trip").submit();
       
     });
   } 
   return api;
-}
+};
 
 var showRoute = function(){
     var ShowMapper = Mapper(false);
@@ -191,6 +143,6 @@ var showRoute = function(){
         Mapper.directionsDisplay.setMap(map);
         Mapper.directionsDisplay.setPanel(document.getElementById('directionsPanel'));
         callback();
-    })(ShowMapper, ShowMapper.calcSavedRoute)
+    })(ShowMapper, ShowMapper.calcSavedRoute);
   };
 
