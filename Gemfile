@@ -18,7 +18,7 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
-gem 'bcrypt', '~> 3.1.2'
+gem 'bcrypt-ruby', '~> 3.1.2'
 group :development, :test do
 gem 'dotenv-rails'
   gem 'rspec-rails', '~> 3.0.0.beta'
