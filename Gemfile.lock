@@ -212,7 +212,6 @@ DEPENDENCIES
   pry
   rails (= 4.0.2)
   rails_12factor
-  rb-fsevent
   rspec-rails (~> 3.0.0.beta)
   sass-rails (~> 4.0.0)
   sdoc
